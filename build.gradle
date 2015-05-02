@@ -1,0 +1,45 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+group = 'org.gradle'
+version = '1.0'
+
+
+sourceCompatibility = 1.8
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile 'org.codehaus.groovy:groovy-all:2.2.0'
+	compile 'org.springframework:spring-context:4.0.5.RELEASE'
+	compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+	testCompile 'junit:junit:4.11'
+}
+
+
+ 
+test {
+testLogging {
+	events 'started', 'passed'
+	}
+}
+
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
